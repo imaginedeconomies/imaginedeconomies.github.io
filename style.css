@@ -1,0 +1,170 @@
+:root {
+  --bg: #f7f5ef;
+  --text: #111111;
+  --muted: #555555;
+  --line: #d8d2c7;
+  --button-bg: #ebe5d8;
+  --button-active: #111111;
+  --button-active-text: #f7f5ef;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.6;
+}
+
+.site {
+  min-height: 100vh;
+  padding: 64px 24px 80px;
+}
+
+.intro {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  font-weight: 600;
+  margin: 0 0 28px;
+  letter-spacing: -0.04em;
+}
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  padding: 12px 18px;
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab:hover {
+  background: var(--button-bg);
+}
+
+.tab.active {
+  background: var(--button-active);
+  color: var(--button-active-text);
+  border-color: var(--button-active);
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+.blurb {
+  max-width: 700px;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.people {
+  display: grid;
+  gap: 28px;
+}
+
+.person {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding-top: 8px;
+}
+
+.photo-placeholder {
+  width: 160px;
+  height: 160px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(45deg, #ddd 25%, transparent 25%) -8px 0/16px 16px,
+    linear-gradient(-45deg, #ddd 25%, transparent 25%) -8px 0/16px 16px,
+    linear-gradient(45deg, transparent 75%, #ddd 75%) -8px 0/16px 16px,
+    linear-gradient(-45deg, transparent 75%, #ddd 75%) -8px 0/16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 12px;
+}
+
+.bio h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.bio p {
+  margin: 0;
+  color: var(--text);
+}
+
+.headshot {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--line);
+  filter: grayscale(100%);
+}
+
+.contact-line {
+  margin-top: 50px;
+  font-size: 1rem;
+}
+
+.contact-line a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+@media (max-width: 700px) {
+  .site {
+    padding-top: 40px;
+  }
+
+  .person {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .photo-placeholder {
+    width: 140px;
+    height: 140px;
+  }
+
+  .blurb {
+    font-size: 1.05rem;
+  }
+}

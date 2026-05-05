@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imagined Economies</title>
+  <meta
+    name="description"
+    content="Imagined Economies"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="site">
+    <section class="intro">
+      <h1>Imagined Economies</h1>
+
+      <div class="tabs" role="tablist" aria-label="Site sections">
+        <button
+          class="tab active"
+          id="tab-what"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-what"
+        >
+          What We Do
+        </button>
+
+        <button
+          class="tab"
+          id="tab-who"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-who"
+        >
+          Who We Are
+        </button>
+      </div>
+
+      <section
+        class="panel active"
+        id="panel-what"
+        role="tabpanel"
+        aria-labelledby="tab-what"
+      >
+        <p class="blurb">
+Imagined Economies is a political-economic advisory providing bespoke, in-depth analyses of policy proposals for the future of the American economy. Our core belief is that societal change requires imagination buttressed by analytical tools that consider heterodox policies and institutional designs. In partnership with individuals, nonprofits, and policymakers, we use our expertise and experience across research, politics, government, and academia to rigorously analyze policies — and deliver insights for both specialized and general audiences.
+        </p>
+        <p class="contact-line">
+    Email
+    <a href="mailto:team@imaginedeconomies.com">team@imaginedeconomies.com</a>
+    with a short note about your project or request.
+  </p>
+      </section>
+
+      <section
+        class="panel"
+        id="panel-who"
+        role="tabpanel"
+        aria-labelledby="tab-who"
+        hidden
+      >
+        <div class="people" id="people-list">
+          <article class="person">
+            <img
+              class="headshot"
+              src="justin-modified.jpg"
+              alt="Black and white dotted portrait of Justin Hadad"
+            />
+            <div class="bio">
+              <p>
+                <strong>Justin Hadad</strong> is in the final year of his economics D.Phil. at
+                the University of Oxford, where he studies as a Rhodes scholar.
+                He researches how rules and institutions structure economic
+                interaction. He is currently a visiting researcher at Stanford
+                University’s economics and engineering departments, and has
+                experience across the technology, nonprofit, and public sectors.
+              </p>
+            </div>
+          </article>
+
+          <article class="person">
+            <img
+              class="headshot"
+              src="charles-modified.jpg"
+              alt="Black and white dotted portrait of Charles Wallace-Thomas IV"
+            />
+            <div class="bio">
+              <p>
+                <strong>Charles Wallace-Thomas IV</strong> is a Senior Fellow at the Open
+                Environmental Data Project. Previously, he held appointments at
+                the White House Office of Environmental Justice as the Senior
+                Advisor for Justice40, and the U.S. Department of Energy as an
+                Energy and Economic Justice Policy Fellow. He has worked at the
+                Center for Economic Democracy, the Participatory Budgeting
+                Project, and the Boston Ujima Project. He holds a B.S. in
+                Economics from Northeastern University.
+              </p>
+            </div>
+          </article>
+
+          <article class="person">
+            <img
+              class="headshot"
+              src="mikey-modified.jpeg"
+              alt="Black and white dotted portrait of Michael Wakin"
+            />
+            <div class="bio">
+              <p>
+                <strong>Michael Wakin</strong> is in the final year of his international
+                relations D.Phil. at the University of Oxford, specializing in
+                understanding how political and social forces shape countries’
+                recovery from economic crises. He is currently a visiting
+                scholar at the CUNY Grad Center’s Ralph Bunche Institute and
+                consults for a geopolitical and macroeconomic advisory firm.
+                Previously, he has worked as an analyst at the U.S. Department
+                of the Treasury and journalist for The Associated Press.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+<script>
+  const tabs = document.querySelectorAll(".tab");
+  const panels = document.querySelectorAll(".panel");
+  const peopleList = document.getElementById("people-list");
+
+  function shufflePeople() {
+    if (!peopleList) return;
+
+    const people = Array.from(peopleList.querySelectorAll(".person"));
+
+    for (let i = people.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [people[i], people[j]] = [people[j], people[i]];
+    }
+
+    people.forEach((person) => {
+      peopleList.appendChild(person);
+    });
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const targetId = tab.getAttribute("aria-controls");
+
+      if (targetId === "panel-who") {
+        shufflePeople();
+      }
+
+      tabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.remove("active");
+        panel.hidden = true;
+      });
+
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+
+      const targetPanel = document.getElementById(targetId);
+      targetPanel.hidden = false;
+      targetPanel.classList.add("active");
+    });
+  });
+</script>
+  
+</body>
+</html>
